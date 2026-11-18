@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big Brasa Hamburgueria — Vila Velha</title>
+<meta name="description" content="Hambúrguer artesanal alto, suculento e quentinho em Vila Velha há 5 anos. Peça o seu Big.">
+<meta name="theme-color" content="#D7261E">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Big Brasa Hamburgueria | Vila Velha">
+<meta property="og:description" content="O Big que mata a fome de verdade. Hambúrguer artesanal há 5 anos em Vila Velha.">
+<meta property="og:image" content="https://bigbrasa-demo.vercel.app/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@1&family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carvao:#17110E; --fumaca:#2B201B; --brasa:#D7261E; --brasa2:#A8180F; --mostarda:#FFC72C; --creme:#FFF3DE;
+  --d:'Anton',Impact,sans-serif; --s:'Instrument Serif',Georgia,serif; --b:'Figtree',system-ui,sans-serif;
+  --pad:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--carvao);color:var(--creme);font-family:var(--b);font-size:17px;line-height:1.5;overflow-x:hidden;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mostarda);outline-offset:3px;border-radius:10px}
+.D{font-family:var(--d);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.3px;margin:0}
+.it{font-family:var(--s);font-style:italic;text-transform:none;letter-spacing:0;color:var(--mostarda)}
+.ln{display:block;overflow:hidden;padding-bottom:.04em}
+.ln>span{display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;background:var(--mostarda);color:var(--carvao);font-weight:800;font-size:17px;text-decoration:none;border:0;cursor:pointer;box-shadow:0 5px 0 var(--carvao);transition:transform .15s,box-shadow .15s}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--carvao)}
+.btn.dark{background:var(--carvao);color:var(--mostarda);box-shadow:0 5px 0 rgba(0,0,0,.35)}
+.btn.line{background:transparent;color:var(--creme);box-shadow:none;border:2px solid rgba(255,243,222,.55)}
+.stage::before{content:'';display:block;padding-top:124.03%}
+.ph::before,.queijo .frame::before,.combo .frame::before,.fim .frame::before{content:'';display:block;padding-top:125%}
+.ph img,.queijo .frame img,.combo .frame img,.fim .frame img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:24px;-webkit-transform:translateZ(0);transform:translateZ(0)}
+.combo .frame img{opacity:0;transition:opacity .2s}
+.combo .frame img.on{opacity:1}
+.frame{isolation:isolate;-webkit-backface-visibility:hidden;backface-visibility:hidden;border:5px solid var(--mostarda);border-radius:30px;overflow:hidden;box-shadow:12px 12px 0 var(--carvao)}
+
+/* NAV */
+.nav{position:fixed;top:12px;left:12px;right:12px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none}
+.nav>*{pointer-events:auto}
+.logo{width:56px;height:56px;border-radius:50%;border:3px solid var(--mostarda);overflow:hidden;background:#000;flex:none}
+.logo img{width:100%;height:100%;object-fit:cover}
+.links{display:flex;gap:4px;padding:6px;border-radius:999px;background:rgba(23,17,14,.94)}
+.links a{padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px}
+.links a:hover{background:rgba(255,243,222,.12)}
+.nav .btn{min-height:46px;padding:0 20px;font-size:15px;box-shadow:0 4px 0 var(--carvao)}
+@media (max-width:760px){.links{display:none}.logo{width:48px;height:48px}}
+
+/* faixa xadrez */
+.check{height:44px;background-color:var(--brasa);background-image:conic-gradient(var(--mostarda) 25%,transparent 0 50%,var(--mostarda) 0 75%,transparent 0);background-size:44px 44px}
+.check.dk{background-color:var(--carvao)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-wrap:wrap;background:var(--brasa)}
+.hero-photo{position:relative;flex:1 1 50%;min-height:100vh;min-height:100svh;overflow:hidden}
+.hero-photo img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.hero-photo{touch-action:pan-y}
+.hero-photo::after{content:'';position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(to top,rgba(90,15,0,.6),transparent);z-index:1;pointer-events:none}
+.hero-copy{flex:1 1 50%;display:flex;flex-direction:column;justify-content:center;padding:110px var(--pad) 64px;order:-1;background:var(--brasa);position:relative;z-index:2}
+.hero h1{font-size:clamp(64px,9vw,148px)}
+.hero h1 .it{font-size:1.05em;line-height:.85}
+.hero p{font-size:clamp(17px,1.5vw,21px);max-width:30ch;margin:22px 0 28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.sticker{position:absolute;right:6%;bottom:8%;width:150px;height:150px;border-radius:50%;background:var(--mostarda);color:var(--carvao);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:var(--d);text-transform:uppercase;font-size:20px;line-height:1;box-shadow:6px 6px 0 var(--carvao);z-index:3}
+.sticker b{font-size:44px;font-weight:400}
+.sticker i{font-family:var(--s);text-transform:none;font-size:20px}
+@media (max-width:760px){
+  .hero{flex-direction:column}
+  .hero-photo{flex:none;min-height:0;height:46vh;height:46svh}
+  .hero-copy{order:0;flex:none;padding:26px 22px 30px;border-radius:28px 28px 0 0;margin-top:-28px}
+  .hero h1{font-size:clamp(50px,15vw,66px)}
+  .hero p{margin:14px 0 18px;font-size:16px}
+  .sticker{width:104px;height:104px;font-size:15px;right:16px;bottom:auto;top:calc(46vh - 150px);top:calc(46svh - 150px)}
+  .sticker b{font-size:32px}.sticker i{font-size:15px}
+}
+
+/* ANATOMIA */
+.anat{position:relative;background:var(--carvao);overflow:hidden}
+.anat-in{min-height:100vh;min-height:100svh;max-width:1240px;margin:0 auto;padding:90px var(--pad) 40px;display:grid;grid-template-columns:1fr minmax(0,460px) 1fr;gap:24px 40px;align-items:center}
+.anat h2{position:relative;z-index:2;grid-column:1/-1;text-align:center;font-size:clamp(60px,9vw,140px)}
+.anat h2 .it{font-size:.9em}
+.card-stage{grid-column:2;position:relative;z-index:2;border-radius:34px;background:radial-gradient(circle at 50% 55%,#5a1a12,var(--brasa2) 45%,#3d0d08);border:5px solid var(--mostarda);box-shadow:14px 14px 0 var(--brasa);padding:4%}
+.stage{position:relative;width:100%;-webkit-mask-image:radial-gradient(ellipse 60% 56% at 54% 56%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 60% 56% at 54% 56%,#000 66%,transparent 100%)}
+.stage img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover}
+.parts{position:relative;z-index:2;list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.parts li{display:flex;gap:14px;align-items:baseline;opacity:.28;transition:opacity .35s,transform .35s}
+.parts li.on{opacity:1;transform:translateX(6px)}
+.parts .n{font-family:var(--d);font-size:44px;color:var(--mostarda);line-height:1}
+.parts b{display:block;font-family:var(--d);font-weight:400;text-transform:uppercase;font-size:22px;letter-spacing:.3px}
+.parts small{font-size:14px;color:#d8c7ad}
+.parts.r{grid-column:3}.parts.l{grid-column:1;text-align:right}
+.parts.l li{flex-direction:row-reverse}
+.parts.l li.on{transform:translateX(-6px)}
+.now{display:none;position:relative;z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.9)}
+@media (max-width:900px){
+  .anat-in{grid-template-columns:1fr;padding:84px 22px 28px;gap:14px;align-content:center}
+  .anat h2{font-size:clamp(50px,14vw,70px)}
+  .card-stage{grid-column:1;width:78vw;max-width:40vh;max-width:40svh;margin:0 auto;box-shadow:9px 9px 0 var(--brasa)}
+  .parts{display:none}
+  .now{display:flex;justify-content:center;align-items:baseline;gap:12px;min-height:58px;text-align:left}
+  .now .n{font-family:var(--d);font-size:40px;color:var(--mostarda);line-height:1}
+  .now b{display:block;font-family:var(--d);font-weight:400;text-transform:uppercase;font-size:22px}
+  .now small{font-size:14px;color:#d8c7ad}
+}
+
+/* LETREIRO */
+.marq{background:var(--mostarda);color:var(--carvao);overflow:hidden;padding:18px 0;border-block:4px solid var(--carvao)}
+.marq-row{display:flex;gap:34px;align-items:center;white-space:nowrap;font-family:var(--d);text-transform:uppercase;font-size:clamp(40px,6vw,76px);line-height:1;width:max-content}
+.marq-row .it{color:var(--brasa);font-size:1.05em}
+.marq-row svg{flex:none;color:var(--brasa)}
+
+/* QUEIJO */
+.queijo{background:var(--creme);color:var(--carvao);padding:96px var(--pad)}
+.queijo-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px 64px;align-items:center}
+.queijo-txt{flex:1 1 380px;min-width:0}
+.queijo h2{font-size:clamp(64px,9vw,136px)}
+.queijo h2 .it{color:var(--brasa)}
+.queijo p{font-size:19px;max-width:32ch;margin:20px 0 0}
+.queijo .frame{position:relative;flex:1 1 320px;max-width:440px;transform:rotate(3deg);box-shadow:12px 12px 0 var(--brasa)}
+.queijo .frame img{width:100%;height:100%;object-fit:cover}
+
+/* BIGS */
+.bigs{background:var(--brasa);padding:90px 0 40px}
+.bigs-head{max-width:1240px;margin:0 auto;padding:0 var(--pad);display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between}
+.bigs h2{font-size:clamp(64px,9vw,136px)}
+.arrows{display:flex;gap:10px}
+.arrows button{width:54px;height:54px;border-radius:50%;border:3px solid var(--creme);background:transparent;color:var(--creme);cursor:pointer;display:grid;place-items:center}
+.arrows button:hover{background:var(--creme);color:var(--brasa)}
+.track{display:flex;gap:20px;padding:36px var(--pad) 40px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);scrollbar-width:none;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.card{flex:none;width:min(76vw,330px);scroll-snap-align:start;background:var(--creme);color:var(--carvao);border-radius:30px;padding:12px 12px 20px;box-shadow:10px 10px 0 var(--carvao)}
+.card .ph{-webkit-mask-image:-webkit-radial-gradient(white,black);isolation:isolate;position:relative;border-radius:22px;overflow:hidden;background:var(--carvao)}
+.card img{width:100%;height:100%;object-fit:cover}
+.card h3{font-size:34px;margin:16px 6px 4px}
+.card p{margin:0 6px;font-size:15px;color:#4d3d35}
+.drag{max-width:1240px;margin:0 auto;padding:0 var(--pad);font-weight:700;display:flex;align-items:center;gap:8px}
+
+/* COMBOS */
+.combos{background:var(--carvao);padding:96px var(--pad)}
+.combos-in{max-width:1120px;margin:0 auto}
+.combos h2{font-size:clamp(56px,8vw,120px)}
+.who{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0}
+.who button{min-height:52px;padding:0 24px;border-radius:999px;border:3px solid var(--creme);background:transparent;color:var(--creme);font:800 17px var(--b);cursor:pointer;transition:background .2s,color .2s}
+.who button[aria-pressed="true"]{background:var(--mostarda);border-color:var(--mostarda);color:var(--carvao)}
+.combo{display:flex;flex-wrap:wrap;gap:30px 48px;align-items:center}
+.combo .frame{position:relative;flex:1 1 300px;max-width:420px;box-shadow:12px 12px 0 var(--brasa)}
+.combo .frame img{width:100%;height:100%;object-fit:cover}
+.combo-info{flex:1 1 320px;min-width:0}
+.combo-info h3{font-size:clamp(48px,6vw,80px)}
+.combo-info p{font-size:18px;max-width:34ch;margin:14px 0 16px;color:#eadbc3}
+.price{font-family:var(--d);font-size:64px;color:var(--mostarda);margin:0 0 22px;line-height:1}
+.price small{font-size:30px}
+
+/* SELO */
+.selo{position:relative;background:var(--fumaca);overflow:hidden;padding:96px var(--pad)}
+.fire{position:absolute;left:0;right:0;bottom:0;width:100%;pointer-events:none;z-index:1;background:linear-gradient(to top,rgba(255,110,20,.38),rgba(215,38,30,.12) 45%,transparent 75%)}
+#fAnat{height:42%;left:50%;right:auto;width:760px;max-width:100%;transform:translateX(-50%)}
+#fSelo{height:55%;background:radial-gradient(ellipse 70% 100% at 50% 100%,rgba(255,120,20,.5),rgba(215,38,30,.22) 45%,transparent 75%)}
+.selo-in{position:relative;z-index:2;max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:44px 72px;align-items:center}
+.medal{flex:none;width:330px;height:330px;max-width:80vw;max-height:80vw;border-radius:50%;background:var(--mostarda);color:var(--carvao);border:6px solid var(--carvao);box-shadow:0 0 0 8px var(--mostarda),14px 14px 0 8px var(--brasa);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;padding:30px;transform:rotate(-7deg)}
+.medal small{font-family:var(--s);font-style:italic;font-size:26px}
+.medal strong{font-family:var(--d);font-weight:400;font-size:clamp(48px,9vw,66px);line-height:.9;text-transform:uppercase}
+.medal span{font-weight:700;font-size:14px}
+.medal em{font-style:normal;font-weight:800;color:var(--mostarda);background:var(--carvao);border-radius:999px;padding:5px 14px;margin-top:8px;font-size:14px}
+@media (max-width:760px){.medal{width:250px;height:250px;margin:0 auto}}
+.selo-txt{flex:1 1 380px;min-width:0}
+.selo h2{font-size:clamp(56px,8vw,112px)}
+.nums{display:flex;flex-wrap:wrap;gap:24px 44px;margin-top:30px}
+.num b{display:block;font-family:var(--d);font-weight:400;font-size:clamp(60px,7vw,92px);line-height:1;color:var(--mostarda)}
+.num span{font-size:15px;color:#e6d6bd}
+.stars{position:relative;display:inline-block;font-size:24px;letter-spacing:4px;color:#5d4a40}
+.stars i{position:absolute;top:0;right:0;bottom:0;left:0;width:90.6%;overflow:hidden;white-space:nowrap;color:var(--mostarda);font-style:normal}
+
+/* FINAL */
+.fim{background:var(--mostarda);color:var(--carvao);padding:84px var(--pad) 40px;overflow:hidden}
+.fim h2{font-size:clamp(76px,17vw,260px);line-height:.86;text-align:center}
+.fim h2 .r{color:var(--brasa)}
+.fim-in{max-width:1120px;margin:56px auto 0;display:flex;flex-wrap:wrap;gap:36px 56px;align-items:center}
+.fim .frame{position:relative;flex:1 1 300px;max-width:420px;border-color:var(--carvao);box-shadow:12px 12px 0 var(--brasa)}
+.fim .frame img{width:100%;height:100%;object-fit:cover}
+.fim-txt{flex:1 1 340px;min-width:0}
+.info{display:grid;gap:12px;margin:0 0 24px;font-size:18px}
+.info div{background:var(--creme);border-radius:22px;padding:14px 18px;border:3px solid var(--carvao)}
+.info b{display:block;font-size:13px;letter-spacing:.3px;color:#6b5648}
+footer{background:var(--carvao);padding:36px var(--pad) 110px;display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between;font-size:15px;color:#d9c9b0}
+.float{position:fixed;left:14px;right:14px;bottom:14px;z-index:45;display:none;transform:translateY(150%);transition:transform .35s ease}
+.float.show{transform:none}
+.float .btn{width:100%;box-shadow:0 5px 0 var(--carvao),0 12px 30px rgba(0,0,0,.4)}
+@media (max-width:760px){.float{display:block}.nav .btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+<a class="logo" href="#topo" aria-label="Big Brasa, início"><img src="img/logo.webp" alt=""></a>
+<nav class="links" aria-label="Seções"><a href="#anatomia">O Big</a><a href="#bigs">Cardápio</a><a href="#combos">Combos</a><a href="#pedir">Como pedir</a></nav>
+<a class="btn" data-pedir href="#">Pedir agora</a>
+</header>
+<div class="float"><a class="btn" data-pedir href="#">Pedir agora</a></div>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="topo">
+<div class="hero-photo"><img src="img/big-duplo.webp" alt="Big Duplo Gourmet: pão brioche, cebola crispy, duas carnes com queijo derretido, tomate, pepino e alface"></div>
+<div class="sticker" aria-hidden="true"><i>há</i><b>5 anos</b>em Vila Velha</div>
+<div class="hero-copy">
+<h1 class="D"><span class="ln"><span>O Big que</span></span><span class="ln"><span>mata a fome</span></span><span class="ln"><span class="it">de verdade.</span></span></h1>
+<p class="fade">Hambúrguer artesanal alto, suculento e quentinho, do jeito que aparece no Insta.</p>
+<div class="ctas fade"><a class="btn" data-pedir href="#">Pedir agora</a><a class="btn line" href="#bigs">Ver o cardápio</a></div>
+</div>
+</section>
+
+<div class="check" aria-hidden="true"></div>
+
+<!-- ANATOMIA -->
+<section class="anat" id="anatomia">
+<canvas class="fire" id="fAnat" aria-hidden="true"></canvas>
+<div class="anat-in">
+<h2 class="D"><span class="ln"><span>Anatomia <span class="it">do Big</span></span></span></h2>
+<ol class="parts l" aria-hidden="true">
+<li data-i="5"><span class="n">06</span><div><b>Pão de cima</b><small>Brioche brilhante, fecha tudo</small></div></li>
+<li data-i="4"><span class="n">05</span><div><b>Cebola crispy</b><small>Frita até estalar</small></div></li>
+<li data-i="3"><span class="n">04</span><div><b>Mais carne</b><small>Porque é Big</small></div></li>
+</ol>
+<div class="card-stage">
+<div class="stage" role="img" aria-label="Big Duplo Gourmet montado camada por camada">
+<img class="full" src="img/big-duplo.webp" alt="">
+<img class="L" style="clip-path:inset(70% 6% 12% 14% round 40px)" src="img/big-duplo.webp" alt="">
+<img class="L" style="clip-path:inset(62% 5% 20% 10% round 30px)" src="img/big-duplo.webp" alt="">
+<img class="L" style="clip-path:inset(53% 10% 29% 16% round 30px)" src="img/big-duplo.webp" alt="">
+<img class="L" style="clip-path:inset(43% 10% 40% 19% round 30px)" src="img/big-duplo.webp" alt="">
+<img class="L" style="clip-path:inset(37% 10% 50% 17% round 24px)" src="img/big-duplo.webp" alt="">
+<img class="L" style="clip-path:inset(21% 11% 55% 22% round 120px 120px 20px 20px)" src="img/big-duplo.webp" alt="">
+</div>
+</div>
+<ol class="parts r" aria-hidden="true">
+<li data-i="0"><span class="n">01</span><div><b>Pão brioche</b><small>Selado na manteiga</small></div></li>
+<li data-i="1"><span class="n">02</span><div><b>Salada fresca</b><small>Alface, tomate e pepino</small></div></li>
+<li data-i="2"><span class="n">03</span><div><b>Carne de 90 g</b><small>Com queijo derretendo</small></div></li>
+</ol>
+<div class="now" aria-live="polite"><span class="n">01</span><div><b>Pão brioche</b><small>Selado na manteiga</small></div></div>
+</div>
+</section>
+
+<!-- LETREIRO -->
+<div class="marq" aria-hidden="true"><div class="marq-row"></div></div>
+
+<!-- QUEIJO -->
+<section class="queijo">
+<div class="queijo-in">
+<div class="queijo-txt">
+<h2 class="D"><span class="ln"><span>Queijo que</span></span><span class="ln"><span class="it">escorre.</span></span></h2>
+<p class="fade">Carne de 90 g na chapa, queijo derretendo por cima e batata palha crocante. Sem economia.</p>
+</div>
+<div class="frame"><img src="img/queijo-branco.webp" alt="Hambúrguer com queijo derretido escorrendo e batata palha"></div>
+</div>
+</section>
+
+<div class="check dk" aria-hidden="true"></div>
+
+<!-- BIGS -->
+<section class="bigs" id="bigs">
+<div class="bigs-head">
+<h2 class="D"><span class="ln"><span>Escolha</span></span><span class="ln"><span class="it">o seu Big.</span></span></h2>
+<div class="arrows">
+<button type="button" data-dir="-1" aria-label="Lanche anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+<button type="button" data-dir="1" aria-label="Próximo lanche"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+</div>
+<div class="track">
+<article class="card"><div class="ph"><img src="img/big-duplo.webp" alt="Big Duplo Gourmet"></div><h3 class="D">Big Duplo Gourmet</h3><p>Duas carnes, queijo em dobro e cebola crispy.</p></article>
+<article class="card"><div class="ph"><img src="img/bacon.webp" alt="Big Bacon Gourmet"></div><h3 class="D">Big Bacon Gourmet</h3><p>Bacon crocante saindo pelas bordas.</p></article>
+<article class="card"><div class="ph"><img src="img/cheddar-dark.webp" alt="Big Cheddar Gourmet"></div><h3 class="D">Big Cheddar Gourmet</h3><p>Cheddar cremoso e batata palha por cima.</p></article>
+<article class="card"><div class="ph"><img src="img/tudo-ovo.webp" alt="Imperial Gourmet"></div><h3 class="D">Imperial Gourmet</h3><p>Carne de 90 g, ovo, mussarela, alface, tomate e batata palha.</p></article>
+</div>
+<p class="drag"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Arraste pro lado</p>
+</section>
+
+<!-- COMBOS -->
+<section class="combos" id="combos">
+<div class="combos-in">
+<h2 class="D"><span class="ln"><span>Quantos vão</span></span><span class="ln"><span class="it">comer hoje?</span></span></h2>
+<div class="who" role="group" aria-label="Quantas pessoas">
+<button type="button" data-c="0" aria-pressed="false">Só eu</button>
+<button type="button" data-c="1" aria-pressed="true">Casal</button>
+<button type="button" data-c="2" aria-pressed="false">Família (4)</button>
+</div>
+<div class="combo" aria-live="polite">
+<div class="frame" id="cFrame"><img src="img/mao-sofa.webp" alt="Mão segurando hambúrguer com queijo e batata palha"><img class="on" src="img/maos-mesa.webp" alt="Hambúrguer duplo com cheddar numa mesa de bar"><img src="img/corte.webp" alt="Hambúrguer cortado ao meio com queijo derretendo"></div>
+<div class="combo-info">
+<h3 class="D" id="cName">Big Casal</h3>
+<p id="cDesc">Dois burgers com bacon, anéis de cebola, batata frita, açaí 500 ml e refri 1,5 L.</p>
+<p class="price" id="cPrice">R$ 76<small>,50</small></p>
+<a class="btn" data-pedir href="#" id="cBtn">Pedir o Big Casal</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SELO -->
+<section class="selo">
+<div class="fire" id="fSelo" aria-hidden="true"></div>
+<div class="selo-in">
+<div class="medal" role="img" aria-label="Selo Qualidade Diamante Brendi 2026">
+<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 18M15 3l-3 18"/></svg>
+<small>Qualidade</small><strong>Diamante</strong><span>Big Brasa Hamburgueria</span><em>Brendi 2026</em>
+</div>
+<div class="selo-txt">
+<h2 class="D"><span class="ln"><span>Quem pede,</span></span><span class="ln"><span class="it">aprova.</span></span></h2>
+<div class="nums">
+<div class="num"><b data-to="3471" data-dec="0">3.471</b><span>pedidos avaliados</span></div>
+<div class="num"><b data-to="4.53" data-dec="2">4,53</b><span class="stars" aria-hidden="true">★★★★★<i>★★★★★</i></span><br><span>nota dos clientes</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="check" aria-hidden="true"></div>
+
+<!-- FINAL -->
+<section class="fim" id="pedir">
+<h2 class="D"><span class="ln"><span>Tá com fome?</span></span><span class="ln"><span class="r">Pede agora.</span></span></h2>
+<div class="fim-in">
+<div class="frame"><img src="img/saco-kraft.webp" alt="Hambúrguer com bacon saindo do saco de papel do delivery"></div>
+<div class="fim-txt">
+<div class="info">
+<div><b>Onde</b>Delivery em Vila Velha – ES</div>
+<div><b>Horário e localização</b><a href="https://www.instagram.com/bigbrasahamburgueria" target="_blank" rel="noopener">Veja nos destaques do nosso Instagram</a></div>
+</div>
+<a class="btn dark" data-pedir href="#">Pedir pelo cardápio</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div><b style="color:#fff">Big Brasa Hamburgueria</b> · <a href="https://www.instagram.com/bigbrasahamburgueria">@bigbrasahamburgueria</a></div>
+<span>Site demonstrativo · Andrade Studio</span>
+</footer>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ua = navigator.userAgent || '';
+  var lite = /SmartTV|SMART-TV|Tizen|Web0S|WebOS|NetCast|HbbTV|BRAVIA|AFT[A-Z]|CrKey|Roku|Android TV|GoogleTV|Opera TV/i.test(ua)
+    || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
+    || (navigator.deviceMemory && navigator.deviceMemory <= 2)
+    || !window.WebGLRenderingContext;
+  var finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  // Link de pedido: trocar pelo link completo da Brendi
+  var PEDIR_URL = 'https://www.instagram.com/bigbrasahamburgueria';
+  document.querySelectorAll('[data-pedir]').forEach(function(a){ a.href = PEDIR_URL; a.target = '_blank'; a.rel = 'noopener'; });
+
+  // Letreiro
+  var star = '<svg width="38" height="38" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 8.5 9 .5-7 5.6 2.5 9-7.5-5.2L4.5 23.6 7 14.6 0 9l9-.5z" fill="currentColor"/></svg>';
+  var words = ['Big Duplo', '<span class="it">suculento</span>', 'Big Bacon', '<span class="it">brasa acesa</span>', 'Big Cheddar', '<span class="it">farto</span>', 'Imperial'];
+  var row = document.querySelector('.marq-row'), html = '';
+  for (var k = 0; k < 3; k++) words.forEach(function(w){ html += '<span>' + w + '</span>' + star; });
+  row.innerHTML = html;
+
+  // Combos
+  var combos = [
+    {name:'Combo Fiel', desc:'Um burger com batata frita. Pra matar a fome sem pensar duas vezes.', p:['31',',00'], img:'img/mao-sofa.webp', alt:'Mão segurando hambúrguer com queijo e batata palha'},
+    {name:'Big Casal', desc:'Dois burgers com bacon, anéis de cebola, batata frita, açaí 500 ml e refri 1,5 L.', p:['76',',50'], img:'img/maos-mesa.webp', alt:'Hambúrguer duplo com cheddar numa mesa de bar'},
+    {name:'Combo Imperial', desc:'4 Imperial Gourmet pra família toda, com refri 1,5 L de graça.', p:['84',',00'], img:'img/corte.webp', alt:'Hambúrguer cortado ao meio com queijo derretendo'}
+  ];
+  var btns = document.querySelectorAll('.who button'), q = function(id){ return document.getElementById(id); };
+  var cImgs = q('cFrame').querySelectorAll('img'), busy = null;
+  function pick(i){
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.c == i ? 'true' : 'false'); });
+    var c = combos[i];
+    function swap(){ for (var j = 0; j < cImgs.length; j++) cImgs[j].className = j === i ? 'on' : ''; q('cName').textContent = c.name; q('cDesc').textContent = c.desc; q('cPrice').innerHTML = 'R$ ' + c.p[0] + '<small>' + c.p[1] + '</small>'; q('cBtn').textContent = 'Pedir o ' + c.name; }
+    if (window.gsap && !reduce) {
+      if (busy) busy.progress(1).kill();
+      busy = gsap.timeline()
+        .to('#cFrame', {x: 60, rotate: 6, opacity: 0, duration: .16, ease: 'power2.in'})
+        .add(swap)
+        .fromTo('#cFrame', {x: -80, rotate: -8, opacity: 0}, {x: 0, rotate: 0, opacity: 1, duration: .45, ease: 'back.out(1.7)', immediateRender: false})
+        .fromTo('.combo-info > *', {y: 14, opacity: 0}, {y: 0, opacity: 1, stagger: .05, duration: .3, ease: 'power3.out', immediateRender: false}, '<');
+    } else swap();
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ pick(+b.dataset.c); }); });
+
+  // Setas do carrossel
+  var trk = document.querySelector('.track');
+  document.querySelectorAll('.arrows button').forEach(function(b){
+    b.addEventListener('click', function(){ var c = trk.querySelector('.card'); trk.scrollBy({left: (+b.dataset.dir) * (c.offsetWidth + 20), behavior: 'smooth'}); });
+  });
+
+  // Botão flutuante depois do topo
+  var fl = document.querySelector('.float');
+  new IntersectionObserver(function(e){ fl.classList.toggle('show', !e[0].isIntersecting); }, {threshold: .05}).observe(document.querySelector('.hero-copy .ctas'));
+
+  // ===== FOGO (shader WebGL desenhado ao vivo) =====
+  function ShaderFire(cv, opt){
+    var gl = cv.getContext('webgl', {premultipliedAlpha: true, alpha: true, antialias: false});
+    if (!gl) return null;
+    var vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    var fs = [
+    'precision mediump float;uniform vec2 r;uniform float t;uniform float k;',
+    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}',
+    'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}',
+    'void main(){',
+    ' vec2 uv=gl_FragCoord.xy/r; float asp=r.x/r.y;',
+    ' vec2 q=vec2(uv.x*asp*3.4, uv.y*1.1);',
+    ' float w=fbm(q*1.3-vec2(0.,t*1.2));',
+    ' float d=fbm(vec2(q.x*1.5+w*1.2, q.y*1.6-t*2.2));',
+    ' float edge=.6+.4*sin(uv.x*asp*5.+w*5.);',
+    ' float hgt=k*(.6+.5*edge);',
+    ' float y=uv.y/hgt;',
+    ' float f=1.-y+(d-.5)*(.5+1.6*y);',
+    ' f=clamp(f,0.,1.);',
+    ' vec3 c=vec3(.95,.22,.04)*smoothstep(0.,.3,f)+vec3(.05,.42,.06)*smoothstep(.25,.7,f)+vec3(0.,.22,.3)*smoothstep(.72,1.,f);',
+    ' c*=.75+.5*d;',
+    ' float a=smoothstep(.0,.45,f)*(.85+.15*d);',
+    ' gl_FragColor=vec4(min(c,vec3(1.))*a,a);',
+    '}'].join('\n');
+    function sh(t, src){ var s = gl.createShader(t); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.log(gl.getShaderInfoLog(s)); } return s; }
+    var pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr); gl.useProgram(pr);
+    var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    var uR = gl.getUniformLocation(pr, 'r'), uT = gl.getUniformLocation(pr, 't'), uK = gl.getUniformLocation(pr, 'k');
+    var self = this, on = false, t0 = performance.now(), scale = opt.scale || .5;
+    this.base = opt.base || .5; this.boost = 0;
+    function size(){ var w = cv.clientWidth, h = cv.clientHeight, sc = Math.min(scale, Math.sqrt(70000 / Math.max(1, w * h))); cv.width = Math.max(2, Math.round(w * sc)); cv.height = Math.max(2, Math.round(h * sc)); gl.viewport(0, 0, cv.width, cv.height); }
+    this.draw = function(time){ gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT); gl.uniform2f(uR, cv.width, cv.height); gl.uniform1f(uT, time); gl.uniform1f(uK, self.base + self.boost); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); };
+    this.stop = function(){ on = false; self.dead = true; cv.width = cv.height = 1; };
+  function loop(){ if (!on || self.dead) return; self.boost *= .94; self.draw((performance.now() - t0) / 1000); requestAnimationFrame(loop); }
+    size(); window.addEventListener('resize', size);
+    this.size = size;
+    if (window.IntersectionObserver) new IntersectionObserver(function(e){ if (self.dead) return; var w = on; on = e[0].isIntersecting; if (on && !w) loop(); }).observe(cv);
+  }
+  var fireAnat = null, fires = [];
+  if (!reduce && !lite) {
+    try {
+      fireAnat = new ShaderFire(document.getElementById('fAnat'), {base: .42, scale: .45});
+      if (fireAnat.draw) fires.push(fireAnat);
+    } catch (e) { fires = []; }
+    // Vigia: se a tela engasgar, desliga o fogo e fica só o brilho
+    (function watch(){
+      var last = performance.now(), slow = 0, frames = 0;
+      function f(now){
+        var dt = now - last; last = now; frames++;
+        if (dt > 26 && dt < 500) slow++;
+        if (frames >= 60) { if (slow > 12) { fires.forEach(function(x){ x.stop && x.stop(); }); fires = []; return; } frames = 0; slow = 0; }
+        if (fires.length) requestAnimationFrame(f);
+      }
+      requestAnimationFrame(f);
+    })();
+  }
+
+  // Anatomia: textos das camadas
+  var partsData = [['01','Pão brioche','Selado na manteiga'],['02','Salada fresca','Alface, tomate e pepino'],['03','Carne de 90 g','Com queijo derretendo'],['04','Mais carne','Porque é Big'],['05','Cebola crispy','Frita até estalar'],['06','Pão de cima','Brioche brilhante, fecha tudo']];
+  var now = document.querySelector('.now'), lis = document.querySelectorAll('.parts li'), cur = -1;
+  function setPart(i){
+    if (i === cur) return; cur = i;
+    lis.forEach(function(li){ li.classList.toggle('on', +li.dataset.i <= i); });
+    if (fireAnat && fireAnat.draw && i > 0) fireAnat.boost = .32;
+    now.querySelector('.n').textContent = partsData[i][0]; now.querySelector('b').textContent = partsData[i][1]; now.querySelector('small').textContent = partsData[i][2];
+    if (window.gsap && !reduce) gsap.fromTo(now, {y: 12, opacity: 0}, {y: 0, opacity: 1, duration: .3});
+  }
+  setPart(0);
+
+  if (!window.gsap || !window.ScrollTrigger || reduce) { setPart(5); return; }
+  try {
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(e){ var t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({behavior: 'smooth'}); } }); });
+
+  // Abertura do topo
+  gsap.timeline({delay: .1})
+    .from('.hero-photo img', {scale: 1.25, duration: 1.6, ease: 'expo.out'})
+    .from('.hero-copy', {clipPath: 'inset(100% 0 0 0)', duration: .9, ease: 'expo.inOut'}, 0)
+    .from('.hero .ln > span', {yPercent: 110, stagger: .1, duration: .9, ease: 'power4.out'}, .45)
+    .from('.hero .fade', {y: 24, opacity: 0, stagger: .1, duration: .7, ease: 'power3.out'}, .8)
+    .from('.sticker', {scale: 0, rotate: -120, duration: .9, ease: 'back.out(1.7)'}, 1);
+  gsap.to('.sticker', {rotate: 200, ease: 'none', scrollTrigger: {trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true}});
+  gsap.to('.hero-photo img', {yPercent: 12, ease: 'none', scrollTrigger: {trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true}});
+
+  // Títulos revelados por linha
+  gsap.utils.toArray('section:not(.hero) h2.D').forEach(function(h){
+    gsap.from(h.querySelectorAll('.ln > span'), {yPercent: 110, stagger: .1, duration: .9, ease: 'power4.out', scrollTrigger: {trigger: h, start: 'top 85%'}});
+  });
+  gsap.utils.toArray('.fade:not(.hero .fade)').forEach(function(el){
+    gsap.from(el, {y: 30, opacity: 0, duration: .8, ease: 'power3.out', scrollTrigger: {trigger: el, start: 'top 88%'}});
+  });
+
+  // Faixas xadrez andando
+  gsap.utils.toArray('.check').forEach(function(c, i){
+    gsap.fromTo(c, {backgroundPosition: '0px 0px'}, {backgroundPosition: (i % 2 ? -440 : 440) + 'px 0px', ease: 'none', scrollTrigger: {trigger: c, start: 'top bottom', end: 'bottom top', scrub: true}});
+  });
+  // Letreiro andando
+  gsap.fromTo('.marq-row', {xPercent: 0}, {xPercent: -33.3, ease: 'none', scrollTrigger: {trigger: '.marq', start: 'top bottom', end: 'bottom top', scrub: true}});
+
+  // ANATOMIA: o Big se monta
+  var layers = gsap.utils.toArray('.stage .L');
+  gsap.set('.stage .full', {opacity: 0});
+  gsap.set(layers.slice(1), {y: function(){ return -window.innerHeight * .5; }, opacity: 0, rotate: function(i){ return i % 2 ? 7 : -7; }});
+  var tl = gsap.timeline({scrollTrigger: {trigger: '.anat', start: 'top top', end: '+=170%', pin: true, scrub: true, anticipatePin: 1,
+    onUpdate: function(st){ setPart(Math.min(5, Math.floor(st.progress * 6.4))); }}});
+  layers.slice(1).forEach(function(l){ tl.to(l, {y: 0, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.6)'}); });
+  tl.to('.stage .full', {opacity: 1, duration: .5}).to('.card-stage', {rotate: -2, scale: 1.03, duration: .5}, '<');
+
+  // Queijo
+  gsap.from('.queijo .frame', {y: 90, rotate: 12, opacity: 0, duration: 1, ease: 'back.out(1.4)', scrollTrigger: {trigger: '.queijo', start: 'top 70%'}});
+
+  // Cartões
+  gsap.from('.card', {y: 80, rotate: function(i){ return i % 2 ? 7 : -7; }, opacity: 0, stagger: .1, duration: .9, ease: 'back.out(1.5)', scrollTrigger: {trigger: '.track', start: 'top 85%'}});
+
+  // Combos
+  gsap.from('.who button', {y: 30, opacity: 0, stagger: .08, duration: .6, ease: 'power3.out', scrollTrigger: {trigger: '.who', start: 'top 88%'}});
+  gsap.from('.combo .frame', {x: -140, rotate: -12, opacity: 0, duration: 1, ease: 'back.out(1.4)', scrollTrigger: {trigger: '.combo', start: 'top 80%'}});
+
+  // Selo
+  gsap.from('.medal', {rotate: -200, scale: .4, opacity: 0, duration: 1.2, ease: 'back.out(1.5)', scrollTrigger: {trigger: '.selo', start: 'top 70%'}});
+  document.querySelectorAll('.num b').forEach(function(b){
+    var to = +b.dataset.to, dec = +b.dataset.dec, o = {v: 0};
+    gsap.to(o, {v: to, duration: 1.8, ease: 'power2.out', scrollTrigger: {trigger: b, start: 'top 88%'},
+      onUpdate: function(){ b.textContent = o.v.toLocaleString('pt-BR', {minimumFractionDigits: dec, maximumFractionDigits: dec}); }});
+  });
+  gsap.from('.stars i', {width: '0%', duration: 1.8, ease: 'power2.out', scrollTrigger: {trigger: '.stars', start: 'top 88%'}});
+
+  // Final: título gigante cresce
+  gsap.from('.fim h2', {scale: .7, ease: 'none', scrollTrigger: {trigger: '.fim', start: 'top bottom', end: 'top 25%', scrub: true}});
+  gsap.from('.fim .frame', {y: 120, rotate: -10, opacity: 0, duration: 1, ease: 'back.out(1.4)', scrollTrigger: {trigger: '.fim-in', start: 'top 80%'}});
+  gsap.from('.fim-txt > *', {y: 40, opacity: 0, stagger: .12, duration: .8, ease: 'power3.out', scrollTrigger: {trigger: '.fim-in', start: 'top 75%'}});
+
+  } catch (err) {
+    // Se qualquer animação falhar, mostra a página inteira parada (nada some, nada trava)
+    try { ScrollTrigger.getAll().forEach(function(t){ t.kill(true); }); gsap.globalTimeline.clear(); } catch (e) {}
+    try { gsap.set('.ln > span, .fade, .card, .frame, .medal, .sticker, .stage img, .card-stage, .who button, .combo-info > *, .fim h2, .fim-txt > *, .hero-copy, .hero-photo img', {clearProps: 'all'}); } catch (e) {}
+    setPart(5);
+  }
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
