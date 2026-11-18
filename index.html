@@ -85,10 +85,10 @@ a{color:inherit}
 
 /* ANATOMIA */
 .anat{position:relative;background:var(--carvao);overflow:hidden}
-.anat-in{min-height:100vh;min-height:100svh;max-width:1240px;margin:0 auto;padding:90px var(--pad) 40px;display:grid;grid-template-columns:1fr minmax(0,460px) 1fr;gap:24px 40px;align-items:center}
-.anat h2{position:relative;z-index:2;grid-column:1/-1;text-align:center;font-size:clamp(60px,9vw,140px)}
+.anat-in{min-height:100vh;min-height:100svh;max-width:1240px;margin:0 auto;padding:78px var(--pad) 20px;align-content:center;display:grid;grid-template-columns:1fr minmax(0,460px) 1fr;gap:24px 40px;align-items:center}
+.anat h2{position:relative;z-index:2;grid-column:1/-1;text-align:center;font-size:clamp(46px,6vw,96px)}
 .anat h2 .it{font-size:.9em}
-.card-stage{grid-column:2;position:relative;z-index:2;border-radius:34px;background:radial-gradient(circle at 50% 55%,#5a1a12,var(--brasa2) 45%,#3d0d08);border:5px solid var(--mostarda);box-shadow:14px 14px 0 var(--brasa);padding:4%}
+.card-stage{grid-column:2;justify-self:center;width:100%;max-width:calc((100vh - 220px) * .74);max-width:calc((100svh - 220px) * .74);position:relative;z-index:2;border-radius:34px;background:radial-gradient(circle at 50% 55%,#5a1a12,var(--brasa2) 45%,#3d0d08);border:5px solid var(--mostarda);box-shadow:14px 14px 0 var(--brasa);padding:4%}
 .stage{position:relative;width:100%;-webkit-mask-image:radial-gradient(ellipse 60% 56% at 54% 56%,#000 66%,transparent 100%);mask-image:radial-gradient(ellipse 60% 56% at 54% 56%,#000 66%,transparent 100%)}
 .stage img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover}
 .parts{position:relative;z-index:2;list-style:none;margin:0;padding:0;display:grid;gap:22px}
@@ -102,9 +102,9 @@ a{color:inherit}
 .parts.l li.on{transform:translateX(-6px)}
 .now{display:none;position:relative;z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.9)}
 @media (max-width:900px){
-  .anat-in{grid-template-columns:1fr;padding:84px 22px 28px;gap:14px;align-content:center}
-  .anat h2{font-size:clamp(50px,14vw,70px)}
-  .card-stage{grid-column:1;width:78vw;max-width:40vh;max-width:40svh;margin:0 auto;box-shadow:9px 9px 0 var(--brasa)}
+  .anat-in{grid-template-columns:1fr;padding:72px 22px 16px;gap:10px;align-content:center}
+  .anat h2{font-size:clamp(40px,12vw,60px)}
+  .card-stage{grid-column:1;width:78vw;max-width:calc((100vh - 250px) * .74);max-width:calc((100svh - 250px) * .74);margin:0 auto;box-shadow:9px 9px 0 var(--brasa)}
   .parts{display:none}
   .now{display:flex;justify-content:center;align-items:baseline;gap:12px;min-height:58px;text-align:left}
   .now .n{font-family:var(--d);font-size:40px;color:var(--mostarda);line-height:1}
@@ -194,6 +194,9 @@ a{color:inherit}
 footer{background:var(--carvao);padding:36px var(--pad) 110px;display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between;font-size:15px;color:#d9c9b0}
 .float{position:fixed;left:14px;right:14px;bottom:14px;z-index:45;display:none;transform:translateY(150%);transition:transform .35s ease}
 .float.show{transform:none}
+body.in-anat .float{transform:translateY(150%)}
+@media (max-width:760px){body.in-anat .as-badge{bottom:12px}}
+.as-badge{transition:bottom .3s}
 .float .btn{width:100%;box-shadow:0 5px 0 var(--carvao),0 12px 30px rgba(0,0,0,.4)}
 @media (max-width:760px){.float{display:block}.nav .btn{display:none}}
 
@@ -527,7 +530,8 @@ footer{background:var(--carvao);padding:36px var(--pad) 110px;display:flex;flex-
   var layers = gsap.utils.toArray('.stage .L');
   gsap.set('.stage .full', {opacity: 0});
   gsap.set(layers.slice(1), {y: function(){ return -window.innerHeight * .5; }, opacity: 0, rotate: function(i){ return i % 2 ? 7 : -7; }});
-  var tl = gsap.timeline({scrollTrigger: {trigger: '.anat', start: 'top top', end: '+=170%', pin: true, scrub: true, anticipatePin: 1,
+  var tl = gsap.timeline({scrollTrigger: {trigger: '.anat', start: 'top top', end: '+=170%', pin: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true,
+    onToggle: function(st){ document.body.classList.toggle('in-anat', st.isActive); },
     onUpdate: function(st){ setPart(Math.min(5, Math.floor(st.progress * 6.4))); }}});
   layers.slice(1).forEach(function(l){ tl.to(l, {y: 0, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.6)'}); });
   tl.to('.stage .full', {opacity: 1, duration: .5}).to('.card-stage', {rotate: -2, scale: 1.03, duration: .5}, '<');
